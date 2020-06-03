@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+
+	<Project name="Global">
+
+		<Module name="Automation">
+			<UseSikuli>No</UseSikuli>
+			<UseAutoIt>No</UseAutoIt>
+			<SetIE11Registry>yes</SetIE11Registry>
+		</Module>
+	</Project>
+
+	<Project name="SilverBearCRM">
+
+		<Module name="Evidence">
+			<KeepEvidence>Yes</KeepEvidence>
+			<RecordEvidence>Yes</RecordEvidence>
+			<KeepScreenShots>Yes</KeepScreenShots>
+		</Module>
+
+		<Module name="Dashboard">
+
+			<CRMUser> </CRMUser>
+
+		</Module>
+
+		<Module name="Contact">
+
+			<FirstName></FirstName>
+			<LastName></LastName>
+			<Post></Post>
+			<PostText></PostText>
+			<PostAttachment></PostAttachment>
+			<Title></Title>
+			<Salutation></Salutation>
+			<MiddleName></MiddleName>
+			<JobTitle></JobTitle>
+			<JobLevel></JobLevel>
+			<JobDept></JobDept>
+			<Suffix></Suffix>
+			<Pound></Pound>
+			<KnownAs></KnownAs>
+			<DOB></DOB>
+			<HomeEmail></HomeEmail>
+			<WorkEmail></WorkEmail>
+			<EduEmail></EduEmail>
+			<EmailAlias></EmailAlias>
+			<PrefEmail></PrefEmail>
+			<MobPhone></MobPhone>
+			<HomePhone></HomePhone>
+			<BusinessPhone></BusinessPhone>
+			<EducationPhone></EducationPhone>
+			<HomeFax></HomeFax>
+			<BusinessFax></BusinessFax>
+			<HomeAddress></HomeAddress>
+			<Street1></Street1>
+			<Street2></Street2>
+			<Street3></Street3>
+			<City></City>
+			<County></County>
+			<PostalCode></PostalCode>
+			<Country></Country>
+			<ParentOrg></ParentOrg>
+			<PrevName></PrevName>
+			<Gender></Gender>
+			<PrefContact></PrefContact>
+			<OptEmail></OptEmail>
+			<OptBulkEmail></OptBulkEmail>
+			<OptPhone></OptPhone>
+			<OptBulkMail></OptBulkMail>
+			<OptSMS></OptSMS>
+			<OptSurvey></OptSurvey>
+			<OptFax></OptFax>
+			<OptMail></OptMail>
+			<OptOut></OptOut>
+			<SendMktMat></SendMktMat>
+			<LeadSource></LeadSource>
+			<ContactRefNo></ContactRefNo>
+			<TaskSub></TaskSub>
+			<EduAddName></EduAddName>
+			<EduAddStreet1></EduAddStreet1>
+			<EduAddStreet2></EduAddStreet2>
+			<EduAddStreet3></EduAddStreet3>
+			<EduAddCity></EduAddCity>
+			<EduAddCounty></EduAddCounty>
+			<EduAddPostal></EduAddPostal>
+			<EduAddCountry></EduAddCountry>
+			<WorkAddName></WorkAddName>
+			<WorkAddStreet1></WorkAddStreet1>
+			<WorkAddStreet2></WorkAddStreet2>
+			<WorkAddStreet3></WorkAddStreet3>
+			<WorkAddCity></WorkAddCity>
+			<WorkAddCounty></WorkAddCounty>
+			<WorkAddPostal></WorkAddPostal>
+			<WorkAddCountry></WorkAddCountry>
+			<HomeAddInvalid></HomeAddInvalid>
+			<EduAddInvalid></EduAddInvalid>
+			<WorkAddInvalid></WorkAddInvalid>
+
+
+		</Module>
+
+		<Module name="Organisation">
+			<OrgName></OrgName>
+			<Post></Post>
+			<PostText></PostText>
+			<PostAttachment></PostAttachment>
+			<ParentOrg></ParentOrg>
+			<KnownAs></KnownAs>
+			<FormKnownAs></FormKnownAs>
+			<AddName></AddName>
+			<Street1></Street1>
+			<Street2></Street2>
+			<Street3></Street3>
+			<City></City>
+			<County></County>
+			<PostalCode></PostalCode>
+			<Country></Country>
+			<Email></Email>
+			<WebSite></WebSite>
+			<MainPhone></MainPhone>
+			<OthPhone></OthPhone>
+			<Fax></Fax>
+			<BillAddName></BillAddName>
+			<BillAddStreet1></BillAddStreet1>
+			<BillAddStreet2></BillAddStreet2>
+			<BillAddStreet3></BillAddStreet3>
+			<BillAddCity></BillAddCity>
+			<BillAddCounty></BillAddCounty>
+			<BillAddPostal></BillAddPostal>
+			<BillAddCountry></BillAddCountry>
+			<ShipAddName></ShipAddName>
+			<ShipAddStreet1></ShipAddStreet1>
+			<ShipAddStreet2></ShipAddStreet2>
+			<ShipAddStreet3></ShipAddStreet3>
+			<ShipAddCity></ShipAddCity>
+			<ShipAddCounty></ShipAddCounty>
+			<ShipAddPostal></ShipAddPostal>
+			<ShipAddCountry></ShipAddCountry>
+			<TaskSub></TaskSub>
+			<LinkContactFName></LinkContactFName>
+			<LinkContactLName></LinkContactLName>
+			<LinkContactRole></LinkContactRole>
+			<VatNo></VatNo>
+			<VatExempt></VatExempt>
+
+		</Module>
+
+		<Module name="Case">
+
+			<CaseID></CaseID>
+			<Customer></Customer>
+			<CaseTitle></CaseTitle>
+			<Post></Post>
+			<PostText></PostText>
+			<PostAttachment></PostAttachment>
+			<TaskSub></TaskSub>
+
+		</Module>
+
+		<Module name="BulkUpload">
+
+			<UploadOrgName></UploadOrgName>
+			<UploadContFirstName></UploadContFirstName>
+			<UploadContLastName></UploadContLastName>
+			<UploadContTitle></UploadContTitle>
+
+		</Module>
+
+		<Module name="MarketingList">
+
+			<ListName></ListName>
+
+		</Module>
+
+		<Module name="Leads">
+
+			<Topic></Topic>
+			<LeadFirstName></LeadFirstName>
+			<LeadLastName></LeadLastName>
+			<JobTitle></JobTitle>
+			<BuPhone></BuPhone>
+			<MobPhone></MobPhone>
+			<EmailAdd></EmailAdd>
+			<CompName></CompName>
+			<Website></Website>
+			<Street1></Street1>
+			<Street2></Street2>
+			<Street3></Street3>
+			<City></City>
+			<CompState></CompState>
+			<Postal></Postal>
+			<Country></Country>
+			<LeadDesc></LeadDesc>
+			<LeadIndus></LeadIndus>
+			<LeadRevenue></LeadRevenue>
+			<LeadNOE></LeadNOE>
+			<LeadSIC></LeadSIC>
+			<LeadSrcName></LeadSrcName>
+			<ConOppName></ConOppName>
+			<ConOppContact></ConOppContact>
+			<LeadType></LeadType>
+
+		</Module>
+
+		<Module name="Opportunity">
+
+			<OppName></OppName>
+			<Account></Account>
+			<Contact></Contact>
+			<TaskSub></TaskSub>
+
+		</Module>
+
+	</Project>
+
+	<Project name="PeopleSoftCRM">
+
+		<Module name="Contact">
+
+			<FirstName></FirstName>
+			<LastName></LastName>
+			<Title></Title>
+			<Salutation></Salutation>
+			<MiddleName></MiddleName>
+			<JobTitle></JobTitle>
+			<Suffix></Suffix>
+			<KnownAs></KnownAs>
+			<DOB></DOB>
+			<HomeEmail></HomeEmail>
+			<WorkEmail></WorkEmail>
+			<EmailAlias></EmailAlias>
+			<PrefEmail></PrefEmail>
+			<MobPhone></MobPhone>
+			<HomePhone></HomePhone>
+			<BusinessPhone></BusinessPhone>
+			<HomeFax></HomeFax>
+			<BusinessFax></BusinessFax>
+			<HomeAddress></HomeAddress>
+			<Street1></Street1>
+			<Street2></Street2>
+			<Street3></Street3>
+			<City></City>
+			<County></County>
+			<PostalCode></PostalCode>
+			<Country></Country>
+			<ParentOrg></ParentOrg>
+			<PrevName></PrevName>
+			<Gender></Gender>
+			<PrefContact></PrefContact>
+			<OptEmail></OptEmail>
+			<OptBulkEmail></OptBulkEmail>
+			<OptPhone></OptPhone>
+			<OptFax></OptFax>
+			<OptMail></OptMail>
+			<OptOut></OptOut>
+			<SendMktMat></SendMktMat>
+			<LeadSource></LeadSource>
+			<ContactRefNo></ContactRefNo>
+			<TaskSub></TaskSub>
+			<EduAddName></EduAddName>
+			<EduAddStreet1></EduAddStreet1>
+			<EduAddStreet2></EduAddStreet2>
+			<EduAddStreet3></EduAddStreet3>
+			<EduAddCity></EduAddCity>
+			<EduAddCounty></EduAddCounty>
+			<EduAddPostal></EduAddPostal>
+			<EduAddCountry></EduAddCountry>
+			<WorkAddName></WorkAddName>
+			<WorkAddStreet1></WorkAddStreet1>
+			<WorkAddStreet2></WorkAddStreet2>
+			<WorkAddStreet3></WorkAddStreet3>
+			<WorkAddCity></WorkAddCity>
+			<WorkAddCounty></WorkAddCounty>
+			<WorkAddPostal></WorkAddPostal>
+			<WorkAddCountry></WorkAddCountry>
+			<HomeAddInvalid></HomeAddInvalid>
+			<EduAddInvalid></EduAddInvalid>
+			<WorkAddInvalid></WorkAddInvalid>
+			<Department></Department>
+			<WorkAddDept></WorkAddDept>
+			<DeActive></DeActive>
+			<Active></Active>
+			<Deceased></Deceased>
+			<Dormant></Dormant>
+			<LeftCompany></LeftCompany>
+			<Merged></Merged>
+			<NoResponse></NoResponse>
+			<HardDeactivate></HardDeactivate>
+			<HardActivate></HardActivate>
+
+
+		</Module>
+
+		<Module name="Organisation">
+
+			<OrgName></OrgName>
+			<ParentOrg></ParentOrg>
+			<KnownAs></KnownAs>
+			<FormKnownAs></FormKnownAs>
+			<AddName></AddName>
+			<Street1></Street1>
+			<Street2></Street2>
+			<Street3></Street3>
+			<City></City>
+			<County></County>
+			<PostalCode></PostalCode>
+			<Country></Country>
+			<Email></Email>
+			<WebSite></WebSite>
+			<MainPhone></MainPhone>
+			<OthPhone></OthPhone>
+			<Fax></Fax>
+			<BillAddName></BillAddName>
+			<BillAddStreet1></BillAddStreet1>
+			<BillAddStreet2></BillAddStreet2>
+			<BillAddStreet3></BillAddStreet3>
+			<BillAddCity></BillAddCity>
+			<BillAddCounty></BillAddCounty>
+			<BillAddPostal></BillAddPostal>
+			<BillAddCountry></BillAddCountry>
+			<ShipAddName></ShipAddName>
+			<ShipAddStreet1></ShipAddStreet1>
+			<ShipAddStreet2></ShipAddStreet2>
+			<ShipAddStreet3></ShipAddStreet3>
+			<ShipAddCity></ShipAddCity>
+			<ShipAddCounty></ShipAddCounty>
+			<ShipAddPostal></ShipAddPostal>
+			<ShipAddCountry></ShipAddCountry>
+			<ContactFName></ContactFName>
+			<ContactLName></ContactLName>
+			<ExtContactName></ExtContactName>
+			<ContactRole></ContactRole>
+			<ShipToOrg></ShipToOrg>
+			<BillToOrg></BillToOrg>
+			<ResellerComp></ResellerComp>
+			<ConsortComp></ConsortComp>
+			<DeActive></DeActive>
+			<Active></Active>
+			<CeasedTrading></CeasedTrading>
+			<Dormant></Dormant>
+			<Merged></Merged>
+			<NoResponse></NoResponse>
+			<HardDeactivate></HardDeactivate>
+			<HardActivate></HardActivate>
+			<NewContactRole></NewContactRole>
+			<ExistingContactRole></ExistingContactRole>
+			<ContactDeactivated></ContactDeactivated>
+
+		</Module>
+
+	</Project>
+
+</Configuration>

@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+	<Project name="Silverbear">
+
+		<Module name="Login">
+			<Element key="startURL" type="data">https://mf-it-sb-crmint.dev.mfh/CRMINTEGTEST/main.aspx</Element>
+			<Element key="domain" type="data">dev</Element>
+			<Element key="SysAdminUserName" type="data">skachare</Element>
+			<Element key="SysAdminPassWord" type="data">_India_12345</Element>
+			<Element key="userName" type="data">skachare</Element>
+			<Element key="passWord" type="data">_India_12345!</Element>
+			<Element key="taskUser" type="data">Akshay Gogate</Element>
+			<Element key="taskUserName" type="data">agogate</Element>
+			<Element key="taskUserPassword" type="data">Go@G@te@1212</Element>
+		</Module>
+
+		<Module name="Contact">
+			<Element key="firstName" type="data"></Element>
+			<Element key="lastName" type="data"></Element>
+		</Module>
+
+		<Module name="Organisation">
+
+		</Module>
+
+		<Module name="Campaign">
+
+		</Module>
+
+		<Module name="Lead">
+
+		</Module>
+
+		<Module name="Case">
+
+		</Module>
+
+		<Module name="Opportunity">
+
+		</Module>
+
+		<Module name="MarketingList">
+
+		</Module>
+
+	</Project>
+
+	<Project name="PeopleSoftCRM">
+
+		<Module name="Login">
+			<Element key="startURL" type="data">http://sg1d-crm-st-ap.dev.mfh/psp/CRMTST1/?cmd=login</Element>
+			<Element key="userName" type="data">MMAJI</Element>
+			<Element key="passWord" type="data">R@ve12345678</Element>
+		</Module>
+
+	</Project>
+
+
+
+	<Project name="WebPortal">
+
+		<Module name="Login">
+			<Element key="startURL" type="data">http://192.168.2.74/IETTVPortal</Element>
+		</Module>
+
+		<Module name="IndividualUser">
+			<Element key="IndividualUserName" type="data">kish710</Element>
+			<Element key="IndividualPassword" type="data">lichi710</Element>
+		</Module>
+
+		<Module name="InstitutionUser">
+			<Element key="instUserName" type="data">kinley.kindom@water.com</Element>
+			<Element key="instPassWord" type="data">R@ve1234</Element>
+		</Module>
+
+		<Module name="CorporateUser">
+			<Element key="corpUserName" type="data">babbanchandak26@gmail.com</Element>
+			<Element key="corpPassWord" type="data">123456</Element>
+		</Module>
+
+		<Module name="BuyVidedoLogin">
+			<Element key="startURLForBuyVideoAndChannel" type="data">http://dev-rave.theiet.org/IETWRD3WebPortalDev/?home</Element>
+		</Module>
+
+		<Module name="BuyChannel">
+			<Element key="PostalCode" type="data">SG12AY</Element>
+			<Element key="Country" type="data">India</Element>
+			<Element key="Address" type="data">Test Address 1</Element>
+			<Element key="City" type="data">TestCity</Element>
+			<Element key="ProductCodeForAll_BuyChannel" type="data">TVICHET0</Element>
+			<Element key="CategoryName" type="data">Automation Test Category</Element>
+			<Element key="CardNumber" type="data">4530910000012345</Element>
+			<Element key="CVNumber" type="data">111</Element>
+			<Element key="IssueNumber" type="data">1</Element>
+			<Element key="MonthStart" type="data">01</Element>
+			<Element key="YearStart" type="data">16</Element>
+			<Element key="MonthExpire" type="data">12</Element>
+			<Element key="YearExpire" type="data">26</Element>
+			<Element key="CountryForVATCal" type="data">India</Element>
+			<Element key="BillingAddressType" type="data">Home</Element>
+			<Element key="Email" type="data">Kishore.Punjabi@northgate-is.com</Element>
+			<Element key="HouseNumber" type="data">1234</Element>
+		</Module>
+
+	</Project>
+</Configuration>
