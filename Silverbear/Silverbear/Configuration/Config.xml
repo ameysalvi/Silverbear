@@ -55,8 +55,6 @@
 
 	</Project>
 
-
-
 	<Project name="WebPortal">
 
 		<Module name="Login">
@@ -103,4 +101,5 @@
 		</Module>
 
 	</Project>
+	
 </Configuration>

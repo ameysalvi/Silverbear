@@ -9,16 +9,7 @@ namespace Silverbear.Steps
 {
     [Binding]
     public sealed class IE_Silverbear_Contact_Steps
-    {
-        // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
-
-        //private readonly ScenarioContext context;
-
-        //public IE_Silverbear_Contact_Steps(ScenarioContext injectedContext)
-        //{
-        //    context = injectedContext;
-        //}
-
+    {        
         [Given(@"I login with System Admin")]
         public void GivenILoginWithSystemAdmin()
         {
@@ -52,6 +43,7 @@ namespace Silverbear.Steps
         [Then(@"I verify the contact fields with web key field")]
         public void ThenIVerifyTheContactFieldsWithWebKeyField()
         {
+            Objects.ObjSilverbear_Contact_PO.verifyContact("New");
             Objects.ObjSilverbear_Contact_PO.VerifyWebKey();
         }
     

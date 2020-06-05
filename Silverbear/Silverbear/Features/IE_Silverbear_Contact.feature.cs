@@ -95,7 +95,7 @@ testRunner.And("I click on Contact link", ((string)(null)), ((TechTalk.SpecFlow.
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01 SilverBearCRM_TS1_01_CreateContactMandatoryOnlyInSilverBear", "This test creates contact with mandatory fields in SilverBear CRM and verifies it" +
                     " in Silverbear only", new string[] {
                         "mytag"});
-#line 10
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -118,18 +118,65 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-#line 13
+#line 11
  testRunner.When("I click on \"New\" link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 14
+#line 12
  testRunner.And("I Fill all the mandatory fields Title,First Name,Last Name,DOB,Street 1,City,Coun" +
                         "ty,Postal Code,Country,Home email address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 15
+#line 13
  testRunner.And("I click on \"Save\" button of Contact page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 16
+#line 14
  testRunner.Then("I verify the contact fields with web key field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("02 SilverBearCRM_TS1_02_CreateContactConfigFields")]
+        public virtual void _02SilverBearCRM_TS1_02_CreateContactConfigFields()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02 SilverBearCRM_TS1_02_CreateContactConfigFields", "This test creates contact with available fields in SilverBear CRM and verifies it" +
+                    "s integration in Silverbear CRM only", ((string[])(null)));
+#line 16
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+#line 19
+ testRunner.When("I click on \"New\" link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 20
+ testRunner.And("I Fill all the mandatory fields Title,First Name,Last Name,DOB,Street 1,City,Coun" +
+                        "ty,Postal Code,Country,Home email address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 21
+ testRunner.And("I Fill all the non mandatory fields", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 22
+ testRunner.And("I click on \"Save\" button of Contact page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();

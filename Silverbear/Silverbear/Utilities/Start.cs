@@ -65,8 +65,7 @@ namespace Silverbear.Utilities
         public void TearDown()
         {
             // Closing the browser
-            Close(); 
-            
+            Close();             
 
             if (ScenarioContext.Current.TestError != null)
             {

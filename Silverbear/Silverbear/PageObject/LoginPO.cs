@@ -84,9 +84,7 @@ namespace Silverbear.PageObject
 
             }
 
-
         }
-
 
     }
 }

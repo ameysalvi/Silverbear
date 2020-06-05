@@ -26,7 +26,7 @@ namespace Silverbear.PageObject
         private IWait<OpenQA.Selenium.IWebDriver> iWait;
 
         //string Title, DOB;
-        string lastName, postName, firstName, newContactURL, middleName, jobTitle, suffix, knownAs, homeEmail, workEmail, eduEmail, emailAlias, prefEmail, mobPhone, homePhone;
+        string lastName, title, postName, dob, firstName, newContactURL, middleName, jobTitle, suffix, knownAs, homeEmail, workEmail, eduEmail, emailAlias, prefEmail, mobPhone, homePhone;
 
         string buPhone, eduPhone, homeFax, buFax, addName, street1, street2, street3, city, county, postalcode, country, parentorg, prevName, gender, prefContact, optEmail, optBulkMail, optBulkEmail;
 
@@ -139,11 +139,15 @@ namespace Silverbear.PageObject
         //By BtnListContact = By.CssSelector("input.PSPUSHBUTTON");
         By SalutationWarn = By.CssSelector("span.PSTEXT");
         By ietDetails = By.LinkText("IET Details");
+        By ContactRefNo = By.XPath("//*[@id='sb_contactrefno']/div[1]/label/div");
+        //By ContactRefNo = By.CssSelector("div#sb_contactrefno>div>span");
+        By Salutation = By.CssSelector("div#salutation>div>span");
+        By InlineDialogIframe = By.Id("InlineDialog_Iframe");
+        By DialogFooter = By.CssSelector("div#tdDialogFooter");
 
 
 
         #endregion
-
 
         public void HandleUnsecureWebsite()
         {
@@ -173,9 +177,6 @@ namespace Silverbear.PageObject
             return data;
         }
 
-
-
-
         public void redirectToContact(string operation)
         {
 
@@ -183,17 +184,7 @@ namespace Silverbear.PageObject
             {
                 Boolean jsActive;
 
-                Thread.Sleep(70000);
-
-                //closeButton_yellowRibbon = driver.FindElement(By.Id("crmAppMessageBarCloseButtonImage"));
-
-                //Console.WriteLine("Yellow Ribbon found");
-
-                //closeButton_yellowRibbon.Click();
-
-                //Console.WriteLine("Yellow ribbon clicked");
-
-                //Thread.Sleep(2000);
+                Thread.Sleep(70000);                
 
                 driver.SwitchTo().DefaultContent();
 
@@ -223,12 +214,9 @@ namespace Silverbear.PageObject
 
                 // iWait.Until(ExpectedConditions.InvisibilityOfElementLocated(Loading));
 
-                // Get the 'Marketing Dropdown' object and click
+                // Get the 'Marketing Dropdown' object and click                
 
-                //ele_MktDropDown = driver.FindElement(By.CssSelector("div#navTabGroupDiv>span.navBarTopLevelItem>span#TabSFA>a.navTabButtonLink"));
-
-                ele_MktDropDown = driver.FindElement(MktDropDownContact);
-                //driver.FindElement(By.XPath("//*[@id=\"TabSFA\"]/a/span/img")).Click();
+                ele_MktDropDown = driver.FindElement(MktDropDownContact);                
 
                 Thread.Sleep(2000);
 
@@ -248,11 +236,7 @@ namespace Silverbear.PageObject
 
                 // Wait until content is loading on SilverBear CRM
 
-                //iWait.Until(ExpectedConditions.InvisibilityOfElementLocated(Loading));  //changed by diksha 13/05/2020
-
-                //jsActive = Helper.IsJavaScriptActive(driver);   //changed by diksha 13/05/2020
-
-                //SConsole.WriteLine("JS Active 1" + jsActive);  //changed by diksha 13/05/2020
+                //iWait.Until(ExpectedConditions.InvisibilityOfElementLocated(Loading));  //changed by diksha 13/05/2020                
 
                 log.Info("SilverBearCRM_01_SikuliCheck test completed" + " at line:" + new StackTrace(true).GetFrame(0).GetFileLineNumber());
             }
@@ -272,7 +256,6 @@ namespace Silverbear.PageObject
         {
             try
             {
-
                 DefaultWait<IWebDriver> waitNew = new DefaultWait<IWebDriver>(driver);
 
                 waitNew.Timeout = TimeSpan.FromSeconds(60);
@@ -280,11 +263,7 @@ namespace Silverbear.PageObject
                 waitNew.IgnoreExceptionTypes(typeof(NoSuchElementException));
                 waitNew.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
                 waitNew.IgnoreExceptionTypes(typeof(InvalidElementStateException));
-
-                //waitNew.Until(ExpectedConditions.ElementExists(NewContact));
-
-                //waitNew.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.CssSelector(OR.readingXMLFile("Contact", "NewContact", "SilverBearCRM_OR.xml"))));
-
+                
                 // Click on 'New' icon
 
                 ele_New = driver.FindElement(NewContact);   // Need to add wait for new in fluentwait
@@ -319,7 +298,6 @@ namespace Silverbear.PageObject
         {
             try
             {
-
                 DefaultWait<IWebDriver> waitUpdate = new DefaultWait<IWebDriver>(driver);
 
                 waitUpdate.Timeout = TimeSpan.FromSeconds(60);
@@ -370,7 +348,6 @@ namespace Silverbear.PageObject
                 }
                 else
                 {
-
                     ele_firstRecord = ele_SearchTable.FindElements(By.TagName("tr")).ElementAt(0);  // Get the first record from search table
 
                     string contactRefNo = ele_firstRecord.FindElement(By.CssSelector("td:nth-child(12) span")).Text.ToString();  // changed the td:nth-child(2) to td:nth-child(12) as contact reference column is posited at 12th
@@ -406,7 +383,6 @@ namespace Silverbear.PageObject
         {
             try
             {
-
                 Console.WriteLine("Contact Retention & Archiving Operation Started");
 
                 DefaultWait<IWebDriver> waitRetention = new DefaultWait<IWebDriver>(driver);
@@ -502,7 +478,6 @@ namespace Silverbear.PageObject
 
         public void VerifyWebKey()
         {
-
             int searchTryCnt = 0;
 
             Boolean cntFound = false;
@@ -542,9 +517,7 @@ namespace Silverbear.PageObject
             Thread.Sleep(2000);
 
             waitUpdate.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(NewContact));
-
-            // // waitUpdate.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.CssSelector(OR.readingXMLFile("Contact", "NewContact", "SilverBearCRM_OR.xml"))));
-
+            
             // Search and Verify operation
 
             driver.SwitchTo().Frame(driver.FindElement(contentIFrame0));
@@ -599,20 +572,20 @@ namespace Silverbear.PageObject
 
                 ele_firstRecord = ele_SearchTable.FindElements(By.TagName("tr")).ElementAt(0);  // Get the first record from search table
 
+                Thread.Sleep(2000);
+
                 ele_firstRecord.FindElement(By.CssSelector("td:nth-child(2)")).Click();
 
                 Thread.Sleep(7000);
 
                 //iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(Loading));
 
-                iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(NewContactHeader));
+                //iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(NewContactHeader));
 
                 driver.SwitchTo().DefaultContent();
 
                 driver.SwitchTo().Frame(driver.FindElement(contentIFrame1));
-
-                //ele_IetWebKey = driver.FindElement(By.CssSelector("div#sbiet_ietwebkey>div>span"));
-
+                
                 ele_IetWebKey = driver.FindElement(By.Id("IET Web Key_label"));   //changed by diksha 26/03/2020
                 bool contactRefCheck = true;
 
@@ -621,7 +594,6 @@ namespace Silverbear.PageObject
                 Helper.ScrollToViewElement(ele_IetWebKey, driver);
 
                 contactIETWebKey = ele_IetWebKey.Text.ToString();
-
 
                 contactRefCheck = Regex.IsMatch(contactIETWebKey, "[0-9]");
 
@@ -643,25 +615,10 @@ namespace Silverbear.PageObject
 
             try
             {
-                int option;
+                int option;                
 
-                //string fromLanguage = "English", toLanguage = "Chinese", addText = "Address";
-
-                string addType = "PlainAdd";
-
-                //if (addType.Equals("MandarinAdd"))
-                //{
-                //    Console.WriteLine("---------- Calling Langugae Translator -----");
-
-                //    transResult = langTranslator(fromLanguage, toLanguage, addText);
-
-                //    Console.WriteLine("Langugae Trnslator Result:" + transResult);
-                //}
-
-
-
-                //IList<string> contDetails = objConfig.readSysConfigFile("SilverBearCRM", "Contact", "SysConfig.xml");
-
+                string addType = "PlainAdd";                
+                
                 driver.SwitchTo().DefaultContent();
 
                 driver.SwitchTo().Frame(driver.FindElement(contentIFrame1));
@@ -679,7 +636,6 @@ namespace Silverbear.PageObject
                     ele_TitleOuter.Click();
                 }
 
-
                 Thread.Sleep(1000);
 
                 ele_TitleDropDown = driver.FindElement(Title);
@@ -693,9 +649,7 @@ namespace Silverbear.PageObject
                 IList<IWebElement> titleOptions = ele_TitleSelect.Options;
 
                 if (operation.Equals("New"))
-                {
-                    //ele_TitleSelect.SelectByIndex(option);
-
+                {                
                     ele_TitleSelect.SelectByText("Mr");
                 }
                 else
@@ -721,7 +675,7 @@ namespace Silverbear.PageObject
 
                 ele_FirstNameOuter.Click();
 
-                iWait.Until(ExpectedConditions.ElementIsVisible(FirstName));
+                iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(FirstName));
 
                 ele_FirstName = driver.FindElement(FirstName);
 
@@ -749,7 +703,7 @@ namespace Silverbear.PageObject
 
                 ele_LastNameOuter.Click();
 
-                iWait.Until(ExpectedConditions.ElementIsVisible(LastName));
+                iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(LastName));
 
                 ele_LastName = driver.FindElement(LastName);
 
@@ -770,10 +724,7 @@ namespace Silverbear.PageObject
 
                 Thread.Sleep(2000);
 
-
-
                 //////////////////////////////////////////////DOB//////////////////////////////////////////////////////////
-
 
                 ele_DOBOuter = driver.FindElement(By.Id("birthdate"));
 
@@ -808,26 +759,17 @@ namespace Silverbear.PageObject
 
                 Thread.Sleep(2000);
 
-                log.Info("DOb added" + DOB);
-
-
-
-
-                //Thread.Sleep(5000);
+                log.Info("DOb added" + DOB);                
 
                 /////////////////////////////////////// Street 1 /////////////////////////////////////////////
 
-                ele_street1Outer = driver.FindElement(Street1ContactOuter);
-
-                //uf.scrollIntoView(driver, ele_street1Outer);
+                ele_street1Outer = driver.FindElement(Street1ContactOuter);                
 
                 Thread.Sleep(2000);
 
-                ele_street1Outer.Click();
+                ele_street1Outer.Click();                
 
-                //uf.alertHandling(driver, "alert", null, null);
-
-                iWait.Until(ExpectedConditions.ElementIsVisible(Street1Contact));
+                iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(Street1Contact));
 
                 ele_street1 = driver.FindElement(Street1Contact);
 
@@ -853,12 +795,8 @@ namespace Silverbear.PageObject
 
                 ele_street1.SendKeys(OpenQA.Selenium.Keys.Tab);
 
-                /////////////////////////////////////////////////////////////////////////////////////////////
-
-
                 Thread.Sleep(2000);
-
-
+                
                 //////////////////////////////////// City ///////////////////////////////////////////////////////////////////////////////////////////////
 
                 ele_cityOuter = driver.FindElement(CityContactOuter);
@@ -867,7 +805,7 @@ namespace Silverbear.PageObject
 
                 Helper.AlertHandling(driver, "alert", null, null);
 
-                iWait.Until(ExpectedConditions.ElementIsVisible(CityContact));
+                iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(CityContact));
 
                 ele_city = driver.FindElement(CityContact);
 
@@ -892,8 +830,7 @@ namespace Silverbear.PageObject
                 ele_city.SendKeys(city);
 
                 Thread.Sleep(2000);
-                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+                
                 ///////////////////////////////////// County //////////////////////////////////////////////////////////////////////////////////////////
 
                 ele_countyOuter = driver.FindElement(CountyContactOuter);
@@ -902,7 +839,7 @@ namespace Silverbear.PageObject
 
                 Helper.AlertHandling(driver, "alert", null, null);
 
-                iWait.Until(ExpectedConditions.ElementIsVisible(CountyContact));
+                iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(CountyContact));
 
                 ele_county = driver.FindElement(CountyContact);
 
@@ -926,10 +863,9 @@ namespace Silverbear.PageObject
                 }
 
                 ele_county.SendKeys(county);
+
                 Thread.Sleep(2000);
-
-                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+                
                 /////////////////////////////////// Postal Code //////////////////////////////////////////////////////////////////////////////////////
 
                 Thread.Sleep(2000);
@@ -940,7 +876,7 @@ namespace Silverbear.PageObject
 
                 Helper.AlertHandling(driver, "alert", null, null);
 
-                iWait.Until(ExpectedConditions.ElementIsVisible(PostalCodeContact));
+                iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(PostalCodeContact));
 
                 ele_postalcode = driver.FindElement(PostalCodeContact);
 
@@ -966,10 +902,8 @@ namespace Silverbear.PageObject
 
                 ele_postalcode.SendKeys(OpenQA.Selenium.Keys.Tab);
 
-
                 Thread.Sleep(2000);
-                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+                
                 ////////////////////////////////// Country //////////////////////////////////////////////////////////////////////////////////////////
 
                 ele_countryOuter = driver.FindElement(CountryContactOuter);
@@ -978,7 +912,7 @@ namespace Silverbear.PageObject
 
                 Helper.AlertHandling(driver, "alert", null, null);
 
-                iWait.Until(ExpectedConditions.ElementIsVisible(CountryContact));
+                iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(CountryContact));
 
                 ele_country = driver.FindElement(CountryContact);
 
@@ -986,7 +920,6 @@ namespace Silverbear.PageObject
 
                 if (operation.Equals("New"))
                 {
-
                     country = "United Kingdom";
                 }
                 else
@@ -1002,7 +935,6 @@ namespace Silverbear.PageObject
 
                 /////////////////// Home email address ///////////////////////////
 
-
                 ele_HEmailOuter = driver.FindElement(HomeEmailOuter);
 
                 homeEmail = firstGuid.Remove(10) + "homenew@test.com";
@@ -1011,7 +943,7 @@ namespace Silverbear.PageObject
                 {
                     ele_HEmailOuter.Click();
 
-                    iWait.Until(ExpectedConditions.ElementIsVisible(HomeEmail));
+                    iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(HomeEmail));
 
                     ele_HEmail = driver.FindElement(HomeEmail);
 
@@ -1037,15 +969,7 @@ namespace Silverbear.PageObject
 
                     ele_GenderOuter.Click();
 
-                    ele_GenderOuter.SendKeys(OpenQA.Selenium.Keys.Tab);
-
-                    //IWebElement ele_Gender = driver.FindElement(By.CssSelector("select#gendercode_i"));
-
-                    //SelectElement ele_genderDropDown = new SelectElement(ele_Gender);
-
-                    //ele_genderDropDown.SelectByText("Female");
-
-                    //ele_Gender.SendKeys(OpenQA.Selenium.Keys.Tab);
+                    ele_GenderOuter.SendKeys(OpenQA.Selenium.Keys.Tab);                    
 
                     IWebElement ele_preferredemailaddress = driver.FindElement(By.CssSelector("div#emailaddress1"));
 
@@ -1065,9 +989,6 @@ namespace Silverbear.PageObject
 
                 }
 
-
-
-
             }
             catch (Exception e)
             {
@@ -1085,7 +1006,9 @@ namespace Silverbear.PageObject
             try
             {
                 driver.SwitchTo().DefaultContent();
-                
+
+                //////////////////////////////// Click on Save on header to save the details ///////////////////////////////////
+
                 IList<IWebElement> btnList = driver.FindElements(BtnListContact);
 
                 Console.WriteLine("Total header elements:=" + btnList.Count);
@@ -1095,70 +1018,23 @@ namespace Silverbear.PageObject
                 Thread.Sleep(2000);
 
                 btnList.ElementAt(0).Click();
-                //IWebElement menubar = driver.FindElement(By.ClassName("ms-crm-CommandBar-Menu"));
-
-                //Thread.Sleep(2000);
-
-                //Helper.ScrollToViewElement(menubar, driver);
-
-                //IList<IWebElement> btnList = driver.FindElements(BtnListContact);
-
-                //IWebElement btnList = driver.FindElement(BtnListContact);
-
+                
+                Thread.Sleep(2000);
+                
                 Thread.Sleep(2000);
 
-                // IList<IWebElement> btnList = driver.FindElements(By.CssSelector("ul.ms-crm-CommandBar-Menu > li"));
-
-                Thread.Sleep(2000);
-
-                //By.CssSelector("input.PSPUSHBUTTON").ElementAt(0).Click();
-
-                //To store darwin webkey
 
                 if (operation.Equals("New"))
                 {
                     newContactURL = driver.Url.ToString();
 
                     Console.WriteLine("New Contact URL on Save" + newContactURL);
-                    //Thread.Sleep(5000);
-
-                    //Helper.ScrollToViewElement(driver.FindElement(ietDetails), driver);
-
-                    //Thread.Sleep(2000);
-
-                    //ele_ietDetailstab = driver.FindElement(By.LinkText("IET Details"));
-
-                    //ele_ietDetailstab.Click();
-
-                    //Thread.Sleep(2000);
-
-                    //DarwinKey = driver.FindElement(By.CssSelector("table.PSLEVEL1SCROLLAREABODY>tbody>tr:nth-child(7)>td:nth-child(2)>span")).Text;
-
-                    //Thread.Sleep(1000);
-
-                    //IWebElement ele_PersonTab = driver.FindElement(By.LinkText("Person"));
-
-                    //ele_PersonTab.Click();
-
-                    //Thread.Sleep(1000);
+                    Thread.Sleep(5000);                
 
                 }
-
-
-                if (operation.Equals("Update"))
-                {
-                    iWait.Until(ExpectedConditions.ElementExists(SalutationWarn));
-
-                    ele_SalConfirm = driver.FindElement(SalutationWarn).FindElement(By.CssSelector("input.PSPUSHBUTTONTBOK"));
-
-                    ele_SalConfirm.Click();
-
-                    Thread.Sleep(4000);
-                }
-
-
-
+                   
             }
+
             catch (Exception e)
             {
                 log.Error(e.Message + "\n" + e.StackTrace + " at line:" + new StackTrace(true).GetFrame(0).GetFileLineNumber());
@@ -1168,6 +1044,228 @@ namespace Silverbear.PageObject
                 Assert.AreEqual(true, false);
             }
 
+        }
+
+        public void verifyContact(string operation)
+        {
+            switch (operation)
+            {
+                case "New":
+                    try
+                    {
+                        Thread.Sleep(5000);
+
+                        int checkCount = 0;
+
+                        string contact_RefNo = null;
+
+                        driver.SwitchTo().DefaultContent();
+
+                        driver.SwitchTo().Frame(driver.FindElement(contentIFrame1));
+
+                        ////////////////////////////////////////// Contact Ref. No. ///////////////////////////////////////////////////
+
+                        iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.PresenceOfAllElementsLocatedBy(ContactRefNo));
+
+                        Helper.ScrollToViewElement(driver.FindElement(ContactRefNo), driver);
+                        
+                        ele_ContactRefNo = driver.FindElement(ContactRefNo);
+
+                        Helper.ScrollToViewElement(driver.FindElement(ContactRefNo), driver);
+
+                        bool contactRefCheck = true;
+
+                        while (checkCount < 60)
+                        {
+                            ele_ContactRefNo = driver.FindElement(ContactRefNo);
+
+                            contact_RefNo = driver.FindElement(By.XPath("//*[@id='Contact Ref No._label']")).Text;    //changed by diksha 05/06/2020
+
+                            Console.WriteLine("Contact Ref. No." + contact_RefNo);  //changed by diksha 05/06/2020
+
+                            contactRefCheck = Regex.IsMatch(contact_RefNo, "[0-9]");   //changed by diksha 05/06/2020
+
+                            checkCount++;
+
+                            if (contactRefCheck)
+                            {
+
+                                // Get the Field values available after saving the contact ex. Salutation
+
+                                ele_Salutation = driver.FindElement(Salutation);
+                                
+                                salutation = driver.FindElement(By.XPath("//*[@id='Salutation_label']")).Text;   //changed by diksha 05/06/2020
+
+                                Console.WriteLine("Salutation: " + salutation);
+
+                                ///////////////////////////////// Save Contact Details into XML file //////////////////////////////////////////
+
+                                int j = 0;
+
+                                string[,] contactFields = new string[64, 2] { { "FirstName", firstName }, { "LastName", lastName }, { "Title", title }, { "MiddleName", middleName }, { "JobTitle", jobTitle }, { "Suffix", suffix }, { "KnownAs", knownAs }, { "DOB", dob }, { "HomeEmail", homeEmail }, { "WorkEmail", workEmail }, { "EmailAlias", emailAlias }, { "PrefEmail", prefEmail }, { "MobPhone", mobPhone }
+                                             , {"HomePhone", homePhone}, {"BusinessPhone", buPhone}, {"HomeFax", homeFax}, {"BusinessFax", buFax}, {"HomeAddress", addName}, {"Street1", street1}, {"Street2",street2} , {"Street3", street3}, {"City",city},{"County",county}, {"PostalCode",postalcode},{"Country",country}, {"ParentOrg", parentorg}, {"PrevName", prevName},{"Gender",gender}, {"PrefContact",prefContact}
+                                             , {"OptEmail", optEmail}, {"OptBulkEmail", optBulkEmail}, {"OptPhone", optPhone}, {"OptFax",optFax}
+                                             , {"OptMail",optMail}, {"OptOut",OptOut},{"SendMktMat",SendMktMat},{"LeadSource",prefLeadSource},{"Salutation",salutation},{"EduAddName",eduAddName}
+                                             , {"EduAddStreet1",eduAddStreet1},{"EduAddStreet2",eduAddStreet2},{"EduAddStreet3",eduAddStreet3},{"EduAddCity",eduAddCity},{"EduAddCounty",eduAddCounty},{"EduAddPostal",eduAddPostal}
+                                             , {"EduAddCountry",eduAddCountry},{"WorkAddName",workAddName},{"WorkAddStreet1",workAddStreet1},{"WorkAddStreet2",workAddStreet2},{"WorkAddStreet3",workAddStreet3},{"WorkAddCity",workAddCity}
+                                             , {"WorkAddCounty",workAddCounty},{"WorkAddPostal",workAddPostal},{"WorkAddCountry",workAddCountry}, {"HomeAddInvalid",homeInvalidCheck}, {"EduAddInvalid",eduInvalidCheck}, {"WorkAddInvalid",workInvalidCheck},
+                                             {"JobLevel",jobLevel}, {"JobDept",jobDept},{"EduEmail",eduEmail},{"EducationPhone",eduPhone},{"OptBulkMail",optBulkMail},{"OptSMS",optSMS},{"OptSurvey",optSurvey}};
+
+                                for (int i = 0; i < 64; i++)
+                                {
+
+                                    Console.WriteLine("Contact Field" + i + "," + j + "is " + contactFields[i, j] + " and " + contactFields[i, (j + 1)]);
+
+                                    cf.writingIntoXML("SilverBearCRM", "Contact", contactFields[i, j], contactFields[i, (j + 1)], "SysConfig.xml");
+
+                                }
+
+                                cf.writingIntoXML("SilverBearCRM", "Contact", "ContactRefNo", contact_RefNo, "SysConfig.xml");  //changed by diksha 05/06/2020
+
+                                break;
+                            }
+
+                            Console.WriteLine("Contact Ref Check count: " + checkCount);
+
+                            Thread.Sleep(1000);
+                        }
+
+                        StringAssert.IsMatch("[0-9]", contact_RefNo);   //changed by diksha 05/06/2020
+
+                        contactReferenceNumber = contactRefNo;
+
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////                
+
+                        driver.SwitchTo().DefaultContent();
+
+                    }
+                    catch (Exception e)
+                    {
+                        log.Error(e.Message + "\n" + e.StackTrace + " at line:" + new StackTrace(true).GetFrame(0).GetFileLineNumber());
+
+                        Console.WriteLine(e.Message + "\n" + e.StackTrace + " at line:" + new StackTrace(true).GetFrame(0).GetFileLineNumber());
+
+                        Assert.AreEqual(true, false);
+                    }
+
+                    break;
+
+                case "Duplicate":
+                    try
+                    {
+                        int checkCount = 0;
+
+                        string contactRefNo = null;
+
+                        Console.WriteLine("Duplicate Verification for contact started");
+
+                        iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(InlineDialogIframe));
+
+                        driver.SwitchTo().Frame(driver.FindElement(InlineDialogIframe));
+
+                        iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(DialogFooter));
+
+                        iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(DialogFooter));
+
+                        Thread.Sleep(5000);
+
+                        Helper.IsJavaScriptActive(driver);
+
+                        ele_dialogFooterSaveBtn = driver.FindElement(DialogFooter).FindElement(By.CssSelector("button#butBegin"));
+
+                        ele_dialogFooterSaveBtn.Click();
+
+                        Thread.Sleep(2000);
+
+                        driver.SwitchTo().DefaultContent();
+
+                        driver.SwitchTo().Frame(driver.FindElement(contentIFrame1));
+
+                        iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.PresenceOfAllElementsLocatedBy(ContactRefNo));
+
+                        ele_ContactRefNo = driver.FindElement(ContactRefNo);
+
+                        Helper.ScrollToViewElement(ele_ContactRefNo,driver);
+
+                        bool contactRefCheck = true;
+
+                        while (checkCount < 60)
+                        {
+                            ele_ContactRefNo = driver.FindElement(ContactRefNo);
+
+                            contactRefNo = ele_ContactRefNo.Text.ToString();
+
+                            Console.WriteLine("Contact Ref. No." + contactRefNo);
+
+                            contactRefCheck = Regex.IsMatch(contactRefNo, "[0-9]");
+
+                            checkCount++;
+
+                            if (contactRefCheck)
+                            {
+
+                                // Get the Field values available after saving the contact ex. Salutation
+
+                                ele_Salutation = driver.FindElement(Salutation);
+
+                                salutation = ele_Salutation.Text.ToString();
+
+                                Console.WriteLine("Salutation: " + salutation);
+
+                                ///////////////////////////////// Save Contact Details into XML file //////////////////////////////////////////
+
+                                int j = 0;
+
+                                string[,] contactFields = new string[57, 2] { { "FirstName", firstName }, { "LastName", lastName }, { "Title", title }, { "MiddleName", middleName }, { "JobTitle", jobTitle }, { "Suffix", suffix }, { "KnownAs", knownAs }, { "DOB", dob }, { "HomeEmail", homeEmail }, { "WorkEmail", workEmail }, { "EmailAlias", emailAlias }, { "PrefEmail", prefEmail }, { "MobPhone", mobPhone }
+                                                 , {"HomePhone", homePhone}, {"BusinessPhone", buPhone}, {"HomeFax", homeFax}, {"BusinessFax", buFax}, {"HomeAddress", addName}, {"Street1", street1}, {"Street2",street2} , {"Street3", street3}, {"City",city},{"County",county}, {"PostalCode",postalcode},{"Country",country}, {"ParentOrg", parentorg}, {"PrevName", prevName},{"Gender",gender}, {"PrefContact",prefContact}
+                                                 , {"OptEmail", optEmail}, {"OptBulkEmail", optBulkEmail}, {"OptPhone", optPhone}, {"OptFax",optFax}
+                                                 , {"OptMail",optMail}, {"OptOut",OptOut},{"SendMktMat",SendMktMat},{"LeadSource",prefLeadSource},{"Salutation",salutation},{"EduAddName",eduAddName}
+                                             , {"EduAddStreet1",eduAddStreet1},{"EduAddStreet2",eduAddStreet2},{"EduAddStreet3",eduAddStreet3},{"EduAddCity",eduAddCity},{"EduAddCounty",eduAddCounty},{"EduAddPostal",eduAddPostal}
+                                             , {"EduAddCountry",eduAddCountry},{"WorkAddName",workAddName},{"WorkAddStreet1",workAddStreet1},{"WorkAddStreet2",workAddStreet2},{"WorkAddStreet3",workAddStreet3},{"WorkAddCity",workAddCity}
+                                             , {"WorkAddCounty",workAddCounty},{"WorkAddPostal",workAddPostal},{"WorkAddCountry",workAddCountry}, {"HomeAddInvalid",homeInvalidCheck}, {"EduAddInvalid",eduInvalidCheck}, {"WorkAddInvalid",workInvalidCheck}};
+
+
+                                for (int i = 0; i < 57; i++)
+                                {
+
+                                    Console.WriteLine("Contact Field" + i + "," + j + "is " + contactFields[i, j] + " and " + contactFields[i, (j + 1)]);
+
+                                    cf.writingIntoXML("SilverBearCRM", "Contact", contactFields[i, j], contactFields[i, (j + 1)], "SysConfig.xml");
+
+                                }
+
+                                cf.writingIntoXML("SilverBearCRM", "Contact", "ContactRefNo", contactRefNo, "SysConfig.xml");
+
+                                break;
+                            }
+
+                            Console.WriteLine("Contact Ref Check count: " + checkCount);
+
+                            Thread.Sleep(1000);
+                        }
+
+                        StringAssert.IsMatch("[0-9]", contactRefNo);
+
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////                
+
+                        driver.SwitchTo().DefaultContent();
+                    }
+                    catch (Exception e)
+                    {
+                        log.Error(e.Message + "\n" + e.StackTrace + " at line:" + new StackTrace(true).GetFrame(0).GetFileLineNumber());
+
+                        Console.WriteLine(e.Message + "\n" + e.StackTrace + " at line:" + new StackTrace(true).GetFrame(0).GetFileLineNumber());
+
+                        Assert.AreEqual(true, false);
+                    }
+
+                    break;
+
+                case "Default":
+                    Console.WriteLine("This is default Case");
+
+                    break;
+            }
         }
 
     }

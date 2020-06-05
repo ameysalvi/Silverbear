@@ -35,40 +35,7 @@ namespace Silverbear.Utilities
             if (!flag)
                 Assert.Fail("Time Out...... Progress Bar is still displayed, after time out");
         }
-
-        //public static void InvisibilityOfProgressBar(IWebDriver driver)
-        //{
-
-        //    String valueOfClassAttr = null;
-        //    String valueOfAriaHidden = null;
-        //    IWebElement progessBar = null;
-        //    Boolean flag = false;
-
-
-        //    for (int i = 1; i <= 60; i = i + 2)
-        //    {
-        //        Logger.log.Info("Waiting for Invisibility of Progress Bar");
-
-        //        progessBar = driver.FindElement(By.ClassName("is-animated-slow"));
-        //        valueOfClassAttr = progessBar.GetAttribute("class");
-        //        valueOfAriaHidden = progessBar.GetAttribute("aria-hidden");
-
-        //        if (/*progessBar.GetAttribute("class").Contains("ng-hide") && */valueOfAriaHidden.Equals("true"))
-        //        {
-        //            flag = true;
-        //            break;
-        //        }
-
-        //        Thread.Sleep(2000);
-        //    }
-
-        //    if (!flag)
-        //    {
-        //         Logger.log.Warn("Time Out...... Progress Bar is still displayed, after time out");
-        //         Assert.Fail();
-        //    }
-
-        //}
+       
         public static void InvisibilityOfSpinner(IWebDriver driver)
         {
             String valueOfAriaHidden = null;
@@ -330,5 +297,41 @@ namespace Silverbear.Utilities
             }
             return javaScriptIsComplete;
         }
+        #region Invisibility of Progress bar
+
+        //public static void InvisibilityOfProgressBar(IWebDriver driver)
+        //{
+
+        //    String valueOfClassAttr = null;
+        //    String valueOfAriaHidden = null;
+        //    IWebElement progessBar = null;
+        //    Boolean flag = false;
+
+
+        //    for (int i = 1; i <= 60; i = i + 2)
+        //    {
+        //        Logger.log.Info("Waiting for Invisibility of Progress Bar");
+
+        //        progessBar = driver.FindElement(By.ClassName("is-animated-slow"));
+        //        valueOfClassAttr = progessBar.GetAttribute("class");
+        //        valueOfAriaHidden = progessBar.GetAttribute("aria-hidden");
+
+        //        if (/*progessBar.GetAttribute("class").Contains("ng-hide") && */valueOfAriaHidden.Equals("true"))
+        //        {
+        //            flag = true;
+        //            break;
+        //        }
+
+        //        Thread.Sleep(2000);
+        //    }
+
+        //    if (!flag)
+        //    {
+        //         Logger.log.Warn("Time Out...... Progress Bar is still displayed, after time out");
+        //         Assert.Fail();
+        //    }
+
+        //}
+        #endregion
     }
 }

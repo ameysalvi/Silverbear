@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<browsers>
+
+  <firefox>false</firefox>
+  <chrome>false</chrome>
+  <ie>true</ie>
+  <headless>false</headless>
+ 
+</browsers>

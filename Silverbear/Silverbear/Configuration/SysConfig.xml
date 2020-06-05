@@ -31,7 +31,7 @@
 			<Post></Post>
 			<PostText></PostText>
 			<PostAttachment></PostAttachment>
-			<Title></Title>
+			<title></title>
 			<Salutation></Salutation>
 			<MiddleName></MiddleName>
 			<JobTitle></JobTitle>
@@ -40,7 +40,7 @@
 			<Suffix></Suffix>
 			<Pound></Pound>
 			<KnownAs></KnownAs>
-			<DOB></DOB>
+			<dob></dob>
 			<HomeEmail></HomeEmail>
 			<WorkEmail></WorkEmail>
 			<EduEmail></EduEmail>
@@ -97,7 +97,6 @@
 			<EduAddInvalid></EduAddInvalid>
 			<WorkAddInvalid></WorkAddInvalid>
 
-
 		</Module>
 
 		<Module name="Organisation">
@@ -143,7 +142,7 @@
 			<LinkContactRole></LinkContactRole>
 			<VatNo></VatNo>
 			<VatExempt></VatExempt>
-
+			
 		</Module>
 
 		<Module name="Case">
@@ -288,7 +287,6 @@
 			<NoResponse></NoResponse>
 			<HardDeactivate></HardDeactivate>
 			<HardActivate></HardActivate>
-
 
 		</Module>
 

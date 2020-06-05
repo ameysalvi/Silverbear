@@ -110,9 +110,7 @@ namespace Silverbear.Configuration
             {
                 List<String> randomDataList = new List<String>();
 
-                //Storing the file path
-
-                //string sysConfigDir = AppDomain.CurrentDomain.BaseDirectory + @"\Configuration\" + fileName;
+                //Storing the file path                               
 
                 string sysConfigDir = @"C:\Project\KYC\Configuration\" + fileName;
 
