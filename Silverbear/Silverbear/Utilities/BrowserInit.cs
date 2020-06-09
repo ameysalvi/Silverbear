@@ -40,9 +40,16 @@ namespace Silverbear.Utilities
                 if (Convert.ToBoolean(browser.SelectBrowser(BrowserCollection.firefox.ToString(), "Browser.xml")) == true)
                 {
                     string s = ConfigurationManager.AppSettings["ApplicationURL"];
-                    driverPath = @"D:\IET_Automation\Silverbear\Silverbear\Silverbear\Library";
-                    driverName = "webdriver.gecko.driver";
-                    FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(driverPath);
+
+                    string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+
+                    driverName = "webdriver.gecko.driver"; // Driver name for Chrome
+
+                    driverPath = baseDir + "geckodriver.exe"; // Path for ChromeDriver
+
+                    System.Environment.SetEnvironmentVariable(driverName, driverPath);
+                    
+                    FirefoxDriverService service = FirefoxDriverService.CreateDefaultService();
                     service.FirefoxBinaryPath = @"C:\Program Files\Mozilla Firefox.\firefox.exe";
                     FirefoxOptions options = new FirefoxOptions();
                     options.AcceptInsecureCertificates = true;
@@ -62,14 +69,14 @@ namespace Silverbear.Utilities
                 }
                 else if (Convert.ToBoolean(browser.SelectBrowser(BrowserCollection.chrome.ToString(), "Browser.xml")) == true)
                 {
-                    driverPath = @"D:\IET_Automation\Silverbear\Silverbear\Silverbear\bin\Debug\Library";
-                    //driverPath = AppDomain.CurrentDomain.BaseDirectory + "chromedriver";
-                    driverName = "webdriver.chrome.driver";
+                    string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+
+                    driverName = "webdriver.chrome.driver"; // Driver name for Chrome
+
+                    driverPath = baseDir + "/chromedriver.exe"; // Path for ChromeDriver                    
 
                     ChromeOptions options = new ChromeOptions();
-
                     options.AddArgument("--disable-extensions");
-
                     options.AddArgument("--disable-extensions");
                     options.AddAdditionalCapability("useAutomationExtension", false);
                     options.AcceptInsecureCertificates = true;
@@ -84,7 +91,8 @@ namespace Silverbear.Utilities
 
                     //options.AddUserProfilePreference("disable-popup-blocking", "true");
                     #endregion
-                    driver = new ChromeDriver(driverPath, options);                
+                    System.Environment.SetEnvironmentVariable(driverName, driverPath);
+                    driver = new ChromeDriver(options);                
 
                     Current.BrowserName = BrowserCollection.chrome.ToString();
 
@@ -106,8 +114,11 @@ namespace Silverbear.Utilities
                     options.EnableNativeEvents = true;
                     options.IgnoreZoomLevel = true;
                     options.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
-                    driverName = "webdriver.ie.driver";
-                    driverPath = @"D:\IET_Automation\Silverbear\Silverbear\Silverbear\Library\IEDriverServer.exe";
+                    string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+
+                    driverName = "webdriver.ie.driver"; // Driver name for Chrome
+
+                    driverPath = baseDir + "/IEDriverServer.exe"; // Path for ChromeDriver
 
                     driver = new InternetExplorerDriver(options);
                     screenHeight = Helper.GetScreenHeight(driver);
